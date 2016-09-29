@@ -34,6 +34,22 @@
 					<section>
 						<h2>React - View layer</h2>
 					</section>
+					<section data-markdown>
+                        <script type="text/template">
+                            ```
+                            class TodoItem extend React.Component {
+                                render() {
+                                    const { task } = this.props;
+                                    const { hidden } = this.state;
+
+                                    return (
+                                        <label>{!hidden && task.toString()}</label>
+                                    )
+                                }
+                            }
+                            ```
+                        </script>
+                    </section>
 					<section>
 						<h3>#1 - Props or States?</h3>
 					</section>
