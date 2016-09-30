@@ -1,40 +1,40 @@
 <!doctype html>
 <html lang="en">
 
-    <head>
-        <meta charset="utf-8">
+	<head>
+		<meta charset="utf-8">
 
-        <title>Lessons from Next-gen</title>
+		<title>Lessons from Next-gen</title>
 
-        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-        <meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
 
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-        <link rel="stylesheet" href="css/reveal.css">
-        <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
-        <link rel="stylesheet" href="lib/css/zenburn.css">
-    </head>
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+	</head>
 
-    <body>
-        <div class="reveal">
-            <div class="slides">
-                <section>
-                    <h1>How React is used in Next-gen</h1>
-                </section>
-                <section>
-                    <h2>Next-gen from 30,000 ft</h2>
-                    <img height="500" width="1100" src="react.png">
-                </section>
-                <section>
-                    <section>
-                        <h2>React - View layer</h2>
-                    </section>
-                    <section data-markdown>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>How React is used in Next-gen</h1>
+				</section>
+				<section>
+					<h2>Next-gen from 30,000 ft</h2>
+					<img height="500" width="1100" src="react.png">
+				</section>
+				<section>
+					<section>
+						<h2>React - View layer</h2>
+					</section>
+					<section data-markdown>
                         <script type="text/template">
                             ```
                             class TodoItem extend React.Component {
@@ -50,109 +50,109 @@
                             ```
                         </script>
                     </section>
-                    <section>
-                        <h3>#1 - Props or States?</h3>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            > Use states for internal, non-shared data, props for everything else
-                        </script>
-                    </section>
-                    <section>
-                        <p><strong>Good candidates for states</strong></p>
-                        <br/>
-                        <ul>
-                            <li>Cursor's position</li>
-                            <li>Toggle state</li>
-                            <li>Show or hidden flag of popup</li>
-                            <li>Uncommited user input</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>#2 - Only pass props that are needed</h3>
-                    </section>
-                    <section>
-                        <h3>Bad</h3>
-                        <img src="passall.png">
-                    </section>
-                    <section>
-                        <h3>Better</h3>
-                        <img src="passneeded.png">
-                        <a href="localhost:8888">Example</a>
-                    </section>
-                    <section>
-                        <p>Better interface documentation</p>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Avoid unnecessary re-render
+					<section>
+						<h3>#1 - Props or States?</h3>
+					</section>
+					<section data-markdown>
+					    <script type="text/template">
+					        > Use states for internal, non-shared data, props for everything else
+					    </script>
+					</section>
+					<section>
+						<p><strong>Good candidates for states</strong></p>
+						<br/>
+						<ul>
+							<li>Cursor's position</li>
+							<li>Toggle state</li>
+							<li>Show or hidden flag of popup</li>
+							<li>Uncommited user input</li>
+						</ul>
+					</section>
+					<section>
+						<h3>#2 - Only pass props that are needed</h3>
+					</section>
+					<section>
+						<h3>Bad</h3>
+						<img src="passall.png">
+					</section>
+					<section>
+						<h3>Better</h3>
+						<img src="passneeded.png">
+						<a href="localhost:8888">Example</a>
+					</section>
+					<section>
+						<p>Better interface documentation</p>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							Avoid unnecessary re-render
 
-                            * React automatically update dom whenever data changes
-                        </script>
-                    </section>
-                    <section>
-                        <h3>#3 - Smart Component vs Dumb Component</h3>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Smart Component
+							* React automatically update dom whenever data changes
+						</script>
+					</section>
+					<section>
+						<h3>#3 - Smart Component vs Dumb Component</h3>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							Smart Component
 
-                            ```javascript
-                            @connect(state => { list: state.todoList })
+							```javascript
+							@connect(state => { list: state.todoList })
 export default class TodoList extends PureComponent {
 
-    render() {
-        const { list } = this.props;
-        return (
-            <div>
-                {list.map(t => 
-                    <TodoItem todo={t} />
-                )}
-            </div>
-        );
-    }
+	render() {
+		const { list } = this.props;
+		return (
+			<div>
+				{list.map(t => 
+					<TodoItem todo={t} />
+				)}
+			</div>
+		);
+	}
 }
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            Dumb Component
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							Dumb Component
 
-                            ```javascript
+							```javascript
 export default class TodoItem extends PureComponent {
 
-    render() {
-        const { todo } = this.props;
-        return (
-            <label>{todo}</label>
-        );
-    }
+	render() {
+		const { todo } = this.props;
+		return (
+			<label>{todo}</label>
+		);
+	}
 }
-                            ```
-                        </script>
-                    </section>
-                    <section>
-                        <h3>Sum up</h3>
-                        <ul>
-                            <li>Use react states for internal states, otherwise use props</li>
-                            <li>Do not pass props unnecessarily</li>
-                            <li>Prefer dumb component</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h2>Redux - State management</h2>
-                    </section>
-                    <section>
-                        <img src="redux.png" height="650">
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                        Reducer example
+							```
+						</script>
+					</section>
+					<section>
+						<h3>Sum up</h3>
+						<ul>
+							<li>Use react states for internal states, otherwise use props</li>
+							<li>Do not pass props unnecessarily</li>
+							<li>Prefer dumb component</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Redux - State management</h2>
+					</section>
+					<section>
+						<img src="redux.png" height="650">
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						Reducer example
 
 
-                        ```javascript
-                        function activeSymbolReducer(state = initialState, action) {
+						```javascript
+						function activeSymbolReducer(state = initialState, action) {
 
     switch (action.type) {
 
@@ -168,20 +168,20 @@ export default class TodoItem extends PureComponent {
             return state;
     }
 };
-                        ```
-                        Very testable !!
-                        </script>
-                    </section>
-                    <section>
-                        <h3>#1 - Prefer process before storing into state</h3>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                        What I get
+						```
+						Very testable !!
+						</script>
+					</section>
+					<section>
+						<h3>#1 - Prefer process before storing into state</h3>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						What I get
 
 
-                        ```javascript
-                        {
+						```javascript
+						{
     "ask_price": "51.47",
     "date_start": 1475153100,
     "display_value": "51.47",
@@ -191,12 +191,12 @@ export default class TodoItem extends PureComponent {
     "spot": "28680.42",
     "spot_time": 1475153100
   }
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                        What I want
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+					    What I want
 
 ```javascript
 {
@@ -209,71 +209,79 @@ export default class TodoItem extends PureComponent {
     "spot_time": 1475153100
 }
 ```
-                        </script>
-                    </section>
-                    <section>
-                        <h2>ImmutableJS</h2>
-                        <p>An immutable collection library</p>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            <h3>Safety</h3>
+					    </script>
+					</section>
+					<section>
+						<h2>ImmutableJS</h2>
+						<p>An immutable collection library</p>
+					</section>
+					<section data-markdown>
+					    <script type="text/template">
+					        <h3>Safety</h3>
 
-                            ```javascript
-                            if (a === b) {
-                                // it's guaranteed that a and b are deeply equal
-                            }
-                            ```
+					        ```javascript
+					        const x = Immutable.Map({...});
+					        someFunc(x);
 
-                            Opportunity for performance improvement
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            <h3>Better API</h3>
+					        x === x // true;
+					        ```
 
-
-                            ```javascript
-                            // ImmutableJS
-                            obj.map((v, k) => console.log(v, k));
+					        Opportunity for performance improvement
+					    </script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+					        <h3>Better API</h3>
 
 
-                            // VanillaJS
-                            Object.keys(obj).map(k => {
-                                const v = obj[k];
-                                console.log(v, k);
-                            })
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### #1 - Do not mix ImmutableJS and VanillaJS !!
+					        ```javascript
+					        // ImmutableJS
+					        obj.map((v, k) => console.log(v, k));
 
 
-                            ```javascript
-                            render() {
-                                const { compact, params } = this.props
-                                return (
-                                    <TradeParams compact={compact} params={params.toJS()} />
-                                )
-                            }
-                            ```
-                        </script>
-                    </section>
-                    <section>
-                        <h2>Reselect - efficient computation</h2>
-                    </section>
-                    <section>
-                        <p>Memoized Selectors</p>
-                        <img src="selector.png">
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                        > It's efficient, thanks to ImmutableJS
+				        	// VanillaJS
+					        Object.keys(obj).map(k => {
+					        	const v = obj[k];
+					        	console.log(v, k);
+					        })
+					        ```
+					    </script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### #1 - Do not mix ImmutableJS and VanillaJS !!
 
-                        ```javascript
-                        import { createSelector } from 'reselect'
+
+							```javascript
+							render() {
+								const { compact, params } = this.props
+								return (
+									<TradeParams compact={compact} params={params.toJS()} />
+								)
+							}
+
+
+							shouldComponentUpdate(nextProps) {
+								if (nextProps === this.props) return false;
+								
+								return true;
+							}
+							```
+						</script>
+					</section>
+					<section>
+						<h2>Reselect - efficient computation</h2>
+					</section>
+					<section>
+						<p>Memoized Selectors</p>
+						<img src="selector.png">
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						> It's efficient, thanks to ImmutableJS
+
+						```javascript
+						import { createSelector } from 'reselect'
 
 var shopItemsSelector = state => state.shop.items
 
@@ -283,69 +291,69 @@ var subtotalSelector = createSelector(
 
   items => items.reduce((acc, item) => acc + item.value, 0)
 )
-                        ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### #1 - Do not memoize simple computation
+						```
+					    </script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### #1 - Do not memoize simple computation
 
 
 
-                            ```javascript
+							```javascript
 
 
-                            var todoListSelector = state => state.todoList
+							var todoListSelector = state => state.todoList
 
 
-                            //
-                            ```
-                        </script>
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ### #2 - Do not share selector among multiple react component
+							//
+							```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							### #2 - Do not share selector among multiple react component
 
 
 
-                            ```javascript
+							```javascript
 
-                            @connect(tradesSelector)
-                            class TradeCard extend Components {
-                                // ...
-                            }
+							@connect(tradesSelector)
+							class TradeCard extend Components {
+								// ...
+							}
 
 
-                            class TradeList extend Component {
-                                render() {
-                                    const { list } = this.props;
-                                    return (
-                                        <div>
-                                            {list.map(l => <TradeCard arg={l} />)}
-                                        </div>
-                                    )
-                                }
-                            }
-                            ```
-                        </script>
-                    </section>
-                    <section>
-                        <h2>Redux Saga - side effects</h2>
-                    </section>
-                    <section>
-                        <ul>
-                            <li>Side effects cancellation</li>
-                            <li>Testability</li>
-                            <li>Better mental model</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <img src="actormodel.png">
-                    </section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ```javascript
-                            function* handlePurchase(action) {
+							class TradeList extend Component {
+								render() {
+									const { list } = this.props;
+									return (
+										<div>
+											{list.map(l => <TradeCard arg={l} />)}
+										</div>
+									)
+								}
+							}
+							```
+						</script>
+					</section>
+					<section>
+						<h2>Redux Saga - side effects</h2>
+					</section>
+					<section>
+						<ul>
+							<li>Side effects cancellation</li>
+							<li>Testability</li>
+							<li>Better mental model</li>
+						</ul>
+					</section>
+					<section>
+						<img src="actormodel.png">
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+							```javascript
+							function* handlePurchase(action) {
     const { pid, price } = action;
     try {
         const { buy } = yield api.buyContract(pid, price);
@@ -363,52 +371,52 @@ export default function* watchPurchase() {
         takeLast(PURCHASE, handlePurchase),
     ];
 }
-                            ```
-                        </script>
-                    </section>
-                    <section>
-                        <h3>Sum Up</h3>
-                        <ul>
-                            <li>React - view</li>
-                            <li>Redux - state management</li>
-                            <li>ImmutableJS - collection library</li>
-                            <li>Reselect - computation memoization</li>
-                            <li>Redux-saga - side effect management</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Thank you!!</h3>
-                    </section>
-                </section>
-            </div>
-        </div>
+							```
+						</script>
+					</section>
+					<section>
+						<h3>Sum Up</h3>
+						<ul>
+							<li>React - view</li>
+							<li>Redux - state management</li>
+							<li>ImmutableJS - collection library</li>
+							<li>Reselect - computation memoization</li>
+							<li>Redux-saga - side effect management</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Thank you!!</h3>
+					</section>
+				</section>
+			</div>
+		</div>
 
-        <script src="lib/js/head.min.js"></script>
-        <script src="js/reveal.js"></script>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
 
-        <script>
+		<script>
 
-            // More info https://github.com/hakimel/reveal.js#configuration
-            Reveal.initialize({
-                controls: true,
-                progress: true,
-                history: true,
-                center: true,
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
 
-                transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
 
-                // More info https://github.com/hakimel/reveal.js#dependencies
-                dependencies: [
-                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-                    { src: 'plugin/zoom-js/zoom.js', async: true },
-                    { src: 'plugin/notes/notes.js', async: true }
-                ]
-            });
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
 
-        </script>
+		</script>
 
-    </body>
+	</body>
 </html>
