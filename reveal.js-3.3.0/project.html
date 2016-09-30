@@ -220,9 +220,10 @@ export default class TodoItem extends PureComponent {
 					        <h3>Safety</h3>
 
 					        ```javascript
-					        if (a === b) {
-					        	// it's guaranteed that a and b are deeply equal
-					        }
+					        const x = Immutable.Map({...});
+					        someFunc(x);
+
+					        x === x // true;
 					        ```
 
 					        Opportunity for performance improvement
@@ -257,6 +258,13 @@ export default class TodoItem extends PureComponent {
 								return (
 									<TradeParams compact={compact} params={params.toJS()} />
 								)
+							}
+
+
+							shouldComponentUpdate(nextProps) {
+								if (nextProps === this.props) return false;
+								
+								return true;
 							}
 							```
 						</script>
